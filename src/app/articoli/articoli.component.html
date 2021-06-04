@@ -1,0 +1,36 @@
+
+<app-jumbotron [Titolo]="'Articoli disponibili'" [SottoTitolo]="'Cerca gli articoli da acquistare'" [show]="false"></app-jumbotron>
+
+  <table id="articoli" border="1px">
+  <caption>Alimentari</caption>
+  <thead>
+    <tr>
+      <th>CodArt</th>
+      <th>Descrizione</th>
+      <th>Um</th>
+      <th>Pezzi</th>
+      <th>Peso(KG/LT)</th>
+      <th>Prezzo</th>
+      <th>Data</th>
+      <th>attivo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let articolo of articoli'>
+      <th>{{articolo.codart}}</th>
+      <th>{{articolo.descrizione}}</th>
+      <th>{{articolo.um}}</th>
+      <th>{{articolo.pzcart}}</th>
+      <th>{{articolo.peso}}</th>
+      <th>{{articolo.prezzo}}</th>
+      <th>{{articolo.data | date}}</th>
+      <th>{{articolo.isactive}}</th>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
