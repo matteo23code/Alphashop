@@ -22,4 +22,9 @@ export class WelcomeComponent implements OnInit {
 
   }
 
+  getSaluti() {
+    console.log("Hai cliccato il tasto saluti");
+
+  }
+
 }
