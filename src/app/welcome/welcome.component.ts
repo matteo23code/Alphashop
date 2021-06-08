@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SalutiDataService } from '../services/data/saluti-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -12,7 +13,9 @@ export class WelcomeComponent implements OnInit {
   saluti: string = 'Benvenuti nel sito Alphashop!';
   titolo2 = 'Seleziona gli articoli da acquistare';
   utente = '';
-  constructor(private route: ActivatedRoute) { }
+  messaggio = '';
+  error = '';
+  constructor(private route: ActivatedRoute,  private salutiSrv: SalutiDataService) { }
 
   ngOnInit(){
 
@@ -23,8 +26,22 @@ export class WelcomeComponent implements OnInit {
   }
 
   getSaluti() {
-    console.log("Hai cliccato il tasto saluti");
+    console.log(this.salutiSrv.getSaluti());
 
-  }
+    this.salutiSrv.getSaluti().subscribe(
+      response => this.handleResponse(response),
+      error => this.handleError(error)
+      );
+     //Utilizzando il metodo subscribe gli stiamo dicendo avvia il serivizio invia la richiesta al web service sottoscrivi l utilizzo di questo, e poi ottieni in maniera asincrona il risultato di questa sottoscrizione.
+    }
+    
+    handleResponse(response: any) {
+      this.messaggio = response;
+      console.log(response);
+    }
 
+    handleError(error: any){
+      this.messaggio = error.error.message;      
+    }
+    
 }
